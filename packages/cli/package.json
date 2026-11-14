@@ -1,0 +1,50 @@
+{
+  "name": "@json2csv/cli",
+  "version": "7.0.8",
+  "description": "Command Line Interface to convert JSON to CSV.",
+  "keywords": [
+    "json",
+    "to",
+    "csv",
+    "export",
+    "convert",
+    "parse"
+  ],
+  "homepage": "https://juanjodiaz.github.io/json2csv",
+  "bugs": {
+    "url": "https://github.com/juanjoDiaz/json2csv/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanjoDiaz/json2csv.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Juanjo Díaz",
+    "email": "juanjo.diazmo@gmail.com"
+  },
+  "type": "module",
+  "bin": {
+    "json2csv": "./bin/json2csv.js"
+  },
+  "scripts": {
+    "lint": "biome check src test",
+    "build:mjs": "tsc --module nodenext --outDir ./bin",
+    "build": "npm run build:mjs",
+    "clean": "node -e \"fs.rmSync('bin', {recursive:true, force:true})\"",
+    "pretest": "npm run build",
+    "test": "vitest run",
+    "test-with-coverage": "vitest run --coverage",
+    "dependencies:update-internal": "npm uninstall @json2csv/formatters @json2csv/node @json2csv/transforms && npm install @json2csv/formatters @json2csv/node @json2csv/transforms",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "~26.1.2"
+  },
+  "dependencies": {
+    "@json2csv/formatters": "^7.0.8",
+    "@json2csv/node": "^7.0.8",
+    "@json2csv/transforms": "^7.0.8",
+    "commander": "^15.0.0"
+  }
+}
